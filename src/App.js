@@ -1,8 +1,21 @@
 import React, { Component } from "react";
+import { BrowserRouter, Router, Switch, Route, Link } from "react-router-dom";
 
 import "./App.css";
 import NavBar from "./components/navbar";
 import Counters from "./components/counters";
+import Home from "./components/home";
+import About from "./components/about";
+import Contact from "./components/contact";
+import Error from "./components/error";
+
+const NewRoute = () => {
+  return (
+    <div>
+      <p1>New Route /new</p1>
+    </div>
+  );
+};
 
 class App extends Component {
   state = {
@@ -38,19 +51,35 @@ class App extends Component {
 
   render() {
     return (
-      <React.Fragment>
-        <NavBar
-          counters={this.state.counters.filter(c => c.value > 0).length}
-        />
-        <main className="container">
-          <Counters
-            counters={this.state.counters}
-            onReset={this.handleReset}
-            onIncrement={this.handleIncrement}
-            onDelete={this.handleDelete}
+      <div>
+        <BrowserRouter>
+          <div>
+            <Switch>
+              <Route path="/new" component={NewRoute} />
+              <Route path="/home" component={Home} />
+              <Route path="/contact" component={Contact} />
+              <Route path="/about" component={About} />
+              <Route path="/count" component={About} />
+
+              <Route component={Error} />
+            </Switch>
+          </div>
+        </BrowserRouter>
+
+        <React.Fragment>
+          <NavBar
+            counters={this.state.counters.filter(c => c.value > 0).length}
           />
-        </main>
-      </React.Fragment>
+          <main className="container">
+            <Counters
+              counters={this.state.counters}
+              onReset={this.handleReset}
+              onIncrement={this.handleIncrement}
+              onDelete={this.handleDelete}
+            />
+          </main>
+        </React.Fragment>
+      </div>
     );
   }
 }

@@ -8,6 +8,8 @@ import Home from "./components/home";
 import About from "./components/about";
 import Contact from "./components/contact";
 import Error from "./components/error";
+import Shop from "./components/shop";
+import Item from "./components/userDetail";
 
 const NewRoute = () => {
   return (
@@ -59,7 +61,9 @@ class App extends Component {
               <Route path="/home" component={Home} />
               <Route path="/contact" component={Contact} />
               <Route path="/about" component={About} />
-              <Route path="/count" component={About} />
+              <Route path="/shop" exact component={Shop} />
+              <Route path="/count" component={() => "s"} />
+              <Route path="/shop/:id" component={Item} />
 
               <Route component={Error} />
             </Switch>

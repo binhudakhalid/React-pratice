@@ -1,12 +1,5 @@
 import React, { Component } from "react";
-import {
-  BrowserRouter,
-  Redirect,
-  Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+import { BrowserRouter, Router, Switch, Route, Link } from "react-router-dom";
 
 import "./App.css";
 import NavBar from "./components/navbar";
@@ -17,19 +10,6 @@ import Contact from "./components/contact";
 import Error from "./components/error";
 import Shop from "./components/shop";
 import Item from "./components/userDetail";
-import Login from "./components/login";
-
-const fakeAuth = {
-  isAuthenticated: false,
-  authenticate(cb) {
-    this.isAuthenticated = true;
-    setTimeout(cb, 100);
-  },
-  signout(cb) {
-    this.isAuthenticated = false;
-    setTimeout(cb, 100);
-  }
-};
 
 const NewRoute = () => {
   return (
@@ -76,17 +56,6 @@ class App extends Component {
       <div>
         <BrowserRouter>
           <div>
-            <div>
-              <ul>
-                <li>
-                  <Link to="public"> Public Page</Link>
-                </li>
-                <li>
-                  <Link to="protected"> Protected Page</Link>
-                </li>
-              </ul>
-            </div>
-
             <Switch>
               <Route path="/new" component={NewRoute} />
               <Route path="/home" component={Home} />
